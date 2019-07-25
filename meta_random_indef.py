@@ -18,18 +18,21 @@ current_rank = comm.rank
 total_ranks = comm.size
 
 
+def _wait_lock(f):  # this doesn't work when you have like 30 threads trying to lock at the same time.
+    while True:
+        try:
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return
+        except (OSError, IOError) as e:
+            pass
+        time.sleep(0.1)
+
+
 def read_global_best() -> int:
     f = open('.best', 'r')
 
-    while True:  # wait for lock
-        try:
-            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            bst = f.readline()
-            break
-        except:
-            pass
-
-        time.sleep(0.1)
+    _wait_lock(f)
+    bst = f.readline()
 
     fcntl.flock(f, fcntl.LOCK_UN)
     f.close()
@@ -38,7 +41,7 @@ def read_global_best() -> int:
 
 def write_global_best(new_best: int, seed: int):
     f = open('.best', 'w')
-    fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)  # gotta lock files to make threads play nice together
+    _wait_lock(f)  # gotta lock files to make threads play nice together
     print(new_best, file=f)
     print('seed:', seed, file=f)
     f.flush()

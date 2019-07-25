@@ -42,5 +42,6 @@ Key | Description | Example
 
 *Don't count on these ever happening. If you're bored, make a PR.*
 
+- Replace file locking with something in-memory. 
 - Store final result with searchspace, so next run program continues to next space-step
 - Set up distribution centre for better managing of distribution kinds.
