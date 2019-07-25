@@ -25,7 +25,7 @@ def dtostr(distro: []) -> str:
     return storable
 
 
-def solve_randomly(prob: problem.Problem, seed: int, distro: [] = None, max_cost = None):
+def solve_randomly(prob: problem.Problem, seed: int, distro: [] = None, max_cost=None):
     random.seed(seed)
 
     if distro is None:
@@ -55,5 +55,11 @@ def solve_randomly(prob: problem.Problem, seed: int, distro: [] = None, max_cost
 
     return cost_so_far
 
+
+if __name__ == '__main__':
+    prob = problem.Problem("maps/map_3.input")
+    res = solve_randomly(prob, 2357970)
+    print(res)
+    prob.write_solution("maps/map_3_score_%d.output" % res)
 
 

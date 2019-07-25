@@ -121,11 +121,3 @@ def main():
     return time.time() - start_time  # runtime
 
 
-if __name__ == '__main__':
-    t = main()
-
-    if current_rank == 0:
-        print('runtime:', round(t, 2), 's, with', total_ranks, 'processes')
-
-    # map3: 3019, 2741, 2659
-

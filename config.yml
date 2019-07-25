@@ -1,6 +1,7 @@
-SEARCH_SPACE: 2**12  # will be evaluated at runtime
+SEARCH_SPACE: 2**18  # will be evaluated at runtime
 UPDATES_PER_RANK: 50  # amount progress updates per process
 VERBOSE: true  # print progress
 CONTROL_DISTRIBUTIONS: false  # if true, will run all seeds for (almost) all distribution types
 MAPNO: 3  # map number.
 WRITE_SOLUTION: true  # if true, will write the final best solution to file.
+INDEFINITE: true
