@@ -1,5 +1,6 @@
 import meta_random
 import meta_random_indef
+import meta_shuffle_indef
 import yaml
 from mpi4py import MPI
 
@@ -12,7 +13,9 @@ total_ranks = comm.size
 
 
 if __name__ == '__main__':
-    if cfg['INDEFINITE']:
+    if cfg['SHUFFLE_MODE']:
+        meta_shuffle_indef.main()
+    elif cfg['INDEFINITE']:
         meta_random_indef.main()
     else:
         t = meta_random.main()

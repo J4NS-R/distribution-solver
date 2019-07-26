@@ -5,3 +5,4 @@ CONTROL_DISTRIBUTIONS: false  # if true, will run all seeds for (almost) all dis
 MAPNO: 3  # map number.
 WRITE_SOLUTION: true  # if true, will write the final best solution to file.
 INDEFINITE: true
+SHUFFLE_MODE: true

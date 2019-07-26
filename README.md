@@ -37,6 +37,7 @@ Key | Description | Example
 `MAPNO` | Map number. Map input files should be named: map_**x**.input. See example maps for format. | `3`
 `WRITE_SOLUTION` | After best solution has been found, write it to a file. It will be in the same dir as the input file, named: map_**x**.output. | `true`
 `INDEFINITE` | Keep running indefinitely, printing new best results as they're found. Theoretically, at some point the program will start doing duplicate work. This will happen even faster with more threads, so don't just leave this running overnight without thinking. `SEARCH_SPACE` and `CONTROL_DISTRIBUTIONS` will be ignored. | `false`
+`SHUFFLE_MODE` | Shuffle tasks before assigning them randomly. Some other options will be ignored. | `true` 
 
 ## Todo's
 
